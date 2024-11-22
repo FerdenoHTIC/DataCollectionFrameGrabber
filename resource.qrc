@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>images/anu.png</file>
+        <file>images/rectangle.png</file>
+        <file>images/list.png</file>
+        <file>images/line.png</file>
+        <file>images/expand-arrows.png</file>
+        <file>images/rec.png</file>
+        <file>images/hexagon.png</file>
+        <file>images/polygon.png</file>
+        <file>images/redo.png</file>
+        <file>images/undo.png</file>
+        <file>images/clear.png</file>
+    </qresource>
+</RCC>

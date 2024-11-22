@@ -1,0 +1,10 @@
+release/logowindow.o
+release/main.o
+release/mainwindow.o
+release/unamewindow.o
+release/videorecorder.o
+release/qrc_resource.o
+release/moc_logowindow.o
+release/moc_mainwindow.o
+release/moc_unamewindow.o
+release/moc_videorecorder.o
