@@ -74,6 +74,10 @@ private:
 
     QElapsedTimer videoStartTimer;
 
+    void disableAllButtons();
+
+    void enableAllButtons();
+
 };
 
 #endif // VIDEORECORDER_H

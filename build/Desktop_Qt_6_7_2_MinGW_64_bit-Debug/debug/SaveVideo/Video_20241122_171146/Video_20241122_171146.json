@@ -1,0 +1,18 @@
+{
+    "Class": [
+        {
+            "ClassName": "Class1",
+            "Timestamp": "00:00:00:630"
+        },
+        {
+            "ClassName": "Class2",
+            "Timestamp": "00:00:01:107"
+        },
+        {
+            "ClassName": "Class3",
+            "Timestamp": "00:00:01:918"
+        }
+    ],
+    "VideoName": "Video_20241122_171146",
+    "VideoPath": "C:/D_Drive/Academics/Qt/DataCollectionFrameGrabber/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/debug/SaveVideo/Video_20241122_171146/Video_20241122_171146.mp4"
+}

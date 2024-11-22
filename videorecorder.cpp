@@ -19,6 +19,8 @@ VideoRecorder::VideoRecorder(QWidget *parent)
     ui->startCamera->setEnabled(true);
     ui->stopCamera->setEnabled(false);
 
+    disableAllButtons();
+
 }
 
 VideoRecorder::~VideoRecorder()
@@ -29,6 +31,20 @@ VideoRecorder::~VideoRecorder()
     }
     delete ui;
 }
+
+
+void VideoRecorder::disableAllButtons(){
+    ui->pushButton->setEnabled(false);
+    ui->pushButton_2->setEnabled(false);
+    ui->pushButton_3->setEnabled(false);
+}
+
+void VideoRecorder::enableAllButtons(){
+    ui->pushButton->setEnabled(true);
+    ui->pushButton_2->setEnabled(true);
+    ui->pushButton_3->setEnabled(true);
+}
+
 
 
 void VideoRecorder::on_startCamera_clicked()
@@ -126,6 +142,8 @@ void VideoRecorder::on_startCamera_clicked()
         // Save the initial timestamp to track the video start time
         videoStartTimer.start();  // Start counting the time from now
         mediaRecorder->record();
+        resetAllButtonColor();
+        enableAllButtons();
         ui->startCamera->setEnabled(false);
         ui->stopCamera->setEnabled(true);
     }
@@ -134,7 +152,7 @@ void VideoRecorder::on_startCamera_clicked()
 
 void VideoRecorder::on_stopCamera_clicked()
 {
-
+    disableAllButtons();
     ui->stopCamera->setEnabled(false);
     ui->startCamera->setEnabled(true);
     mediaRecorder->stop();
