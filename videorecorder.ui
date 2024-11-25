@@ -74,39 +74,77 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>1140</x>
-      <y>270</y>
-      <width>321</width>
-      <height>91</height>
+      <x>1110</x>
+      <y>120</y>
+      <width>357</width>
+      <height>361</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="2">
-      <widget class="QPushButton" name="pushButton_3">
+     <item row="1" column="0">
+      <widget class="QPushButton" name="Abdomen">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton {
-    background-color: Red;
+    background-color: rgb(84, 84, 84);
 }
 </string>
        </property>
        <property name="text">
-        <string>3</string>
+        <string>Abdomen</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QPushButton" name="Lower_Extremities">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: rgb(84, 84, 84);
+}
+</string>
+       </property>
+       <property name="text">
+        <string> Lower Extremities</string>
        </property>
       </widget>
      </item>
      <item row="0" column="0">
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="Head">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <italic>false</italic>
+         <underline>false</underline>
+         <kerning>true</kerning>
+        </font>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton {
-    background-color: Red;
+    background-color: rgb(84, 84, 84);
 }
 </string>
        </property>
        <property name="text">
-        <string>1</string>
+        <string>Head</string>
        </property>
        <property name="iconSize">
         <size>
@@ -116,16 +154,117 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="1">
-      <widget class="QPushButton" name="pushButton_2">
+     <item row="4" column="0">
+      <widget class="QPushButton" name="Upper_Extremities">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton {
-    background-color: Red;
+    background-color: rgb(84, 84, 84);
 }
 </string>
        </property>
        <property name="text">
-        <string>2</string>
+        <string> Upper Extremities</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QPushButton" name="Thorax">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: rgb(84, 84, 84);
+}
+</string>
+       </property>
+       <property name="text">
+        <string>Thorax</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QPushButton" name="Spine">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: rgb(84, 84, 84);
+}
+</string>
+       </property>
+       <property name="text">
+        <string>Spine</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QPushButton" name="Pelvis">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: rgb(84, 84, 84);
+}
+</string>
+       </property>
+       <property name="text">
+        <string>Pelvis</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QPushButton" name="Face">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: rgb(84, 84, 84);
+}
+</string>
+       </property>
+       <property name="text">
+        <string>Face</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QPushButton" name="General">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: rgb(84, 84, 84);
+}
+</string>
+       </property>
+       <property name="text">
+        <string>General</string>
        </property>
       </widget>
      </item>
@@ -141,6 +280,19 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>stopCamera</tabstop>
+  <tabstop>Head</tabstop>
+  <tabstop>startCamera</tabstop>
+  <tabstop>Abdomen</tabstop>
+  <tabstop>Face</tabstop>
+  <tabstop>Pelvis</tabstop>
+  <tabstop>Thorax</tabstop>
+  <tabstop>Spine</tabstop>
+  <tabstop>Upper_Extremities</tabstop>
+  <tabstop>Lower_Extremities</tabstop>
+  <tabstop>General</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

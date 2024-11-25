@@ -8,17 +8,14 @@ VideoRecorder::VideoRecorder(QWidget *parent)
     , imageCapture(new QImageCapture(this))
     , mediaRecorder(new QMediaRecorder(this)) // Initialize mediaRecorder
     , camera(nullptr) // Initialize camera
-    , isButton1On(false)
-    , isButton2On(false)
-    , isButton3On(false)
 
 {
     ui->setupUi(this);
 
-
     ui->startCamera->setEnabled(true);
     ui->stopCamera->setEnabled(false);
 
+    setAllButtonFalse();
     disableAllButtons();
 
 }
@@ -34,17 +31,43 @@ VideoRecorder::~VideoRecorder()
 
 
 void VideoRecorder::disableAllButtons(){
-    ui->pushButton->setEnabled(false);
-    ui->pushButton_2->setEnabled(false);
-    ui->pushButton_3->setEnabled(false);
+
+    ui->Head->setEnabled(false);
+    ui->Face->setEnabled(false);
+    ui->Abdomen->setEnabled(false);
+    ui->Pelvis->setEnabled(false);
+    ui->Thorax->setEnabled(false);
+    ui->Spine->setEnabled(false);
+    ui->Upper_Extremities->setEnabled(false);
+    ui->Lower_Extremities->setEnabled(false);
+    ui->General->setEnabled(false);
 }
 
 void VideoRecorder::enableAllButtons(){
-    ui->pushButton->setEnabled(true);
-    ui->pushButton_2->setEnabled(true);
-    ui->pushButton_3->setEnabled(true);
+
+    ui->Head->setEnabled(true);
+    ui->Face->setEnabled(true);
+    ui->Abdomen->setEnabled(true);
+    ui->Pelvis->setEnabled(true);
+    ui->Thorax->setEnabled(true);
+    ui->Spine->setEnabled(true);
+    ui->Upper_Extremities->setEnabled(true);
+    ui->Lower_Extremities->setEnabled(true);
+    ui->General->setEnabled(true);
 }
 
+void VideoRecorder::setAllButtonFalse(){
+
+    isHeadOn = false;
+    isFaceOn = false;
+    isAbdomenOn = false;
+    isPelvisOn = false;
+    isThoraxOn = false;
+    isSpineOn = false;
+    isUpper_ExtremitiesOn = false;
+    isLower_ExtremitiesOn = false;
+    isGeneralOn = false;
+}
 
 
 void VideoRecorder::on_startCamera_clicked()
@@ -153,6 +176,7 @@ void VideoRecorder::on_startCamera_clicked()
 void VideoRecorder::on_stopCamera_clicked()
 {
     disableAllButtons();
+    resetAllButtonColor();
     ui->stopCamera->setEnabled(false);
     ui->startCamera->setEnabled(true);
     mediaRecorder->stop();
@@ -201,14 +225,32 @@ void VideoRecorder::writeJsonWithClass()
     // Modify the JSON object (example: adding a new class entry)
     QString className;
     switch (currentClass) {
-    case Button1:
-        className = "Class1";
+    case Head:
+        className = "Head";
         break;
-    case Button2:
-        className = "Class2";
+    case Face:
+        className = "Face";
         break;
-    case Button3:
-        className = "Class3";
+    case Abdomen:
+        className = "Abdomen";
+        break;
+    case Pelvis:
+        className = "Pelvis";
+        break;
+    case Thorax:
+        className = "Thorax";
+        break;
+    case Spine:
+        className = "Spine";
+        break;
+    case Upper_Extremities:
+        className = "Upper_Extremities";
+        break;
+    case Lower_Extremities:
+        className = "Lower_Extremities";
+        break;
+    case General:
+        className = "General";
         break;
     default:
         qDebug() << "No class selected. JSON not updated.";
@@ -239,66 +281,159 @@ void VideoRecorder::writeJsonWithClass()
 }
 
 
-void VideoRecorder::on_pushButton_clicked()
+void VideoRecorder::on_Head_clicked()
 {
-
-
-    if(!isButton1On){
+    if(!isHeadOn){
         resetAllButtonColor();
-        ui->pushButton->setStyleSheet("background-color: green");
-        isButton1On=true;
-        currentClass = Button1;
+        ui->Head->setStyleSheet("background-color: rgb(85, 138, 10)");
+        isHeadOn = true;
+        currentClass = Head;
         writeJsonWithClass();
     }else{
         resetAllButtonColor();
-
-    }
-
-
-}
-
-
-void VideoRecorder::on_pushButton_2_clicked()
-{
-    if(!isButton2On){
-        resetAllButtonColor();
-        ui->pushButton_2->setStyleSheet("background-color: green");
-        isButton2On=true;
-        currentClass = Button2;
-        writeJsonWithClass();
-    }else{
-        resetAllButtonColor();
-
     }
 }
 
 
-void VideoRecorder::on_pushButton_3_clicked()
+void VideoRecorder::on_Face_clicked()
 {
-    if(!isButton3On){
+    if(!isFaceOn){
         resetAllButtonColor();
-        ui->pushButton_3->setStyleSheet("background-color: green");
-        isButton3On=true;
-        currentClass = Button3;
+        ui->Face->setStyleSheet("background-color: rgb(85, 138, 10)");
+        isFaceOn = true;
+        currentClass = Face;
         writeJsonWithClass();
     }else{
         resetAllButtonColor();
-
     }
 }
 
+
+void VideoRecorder::on_Abdomen_clicked()
+{
+    if(!isAbdomenOn){
+        resetAllButtonColor();
+        ui->Abdomen->setStyleSheet("background-color: rgb(85, 138, 10)");
+        isAbdomenOn = true;
+        currentClass = Abdomen;
+        writeJsonWithClass();
+    }else{
+        resetAllButtonColor();
+    }
+}
+
+void VideoRecorder::on_Pelvis_clicked()
+{
+    if(!isPelvisOn){
+        resetAllButtonColor();
+        ui->Pelvis->setStyleSheet("background-color: rgb(85, 138, 10)");
+        isPelvisOn = true;
+        currentClass = Pelvis;
+        writeJsonWithClass();
+    }else{
+        resetAllButtonColor();
+    }
+}
+
+
+void VideoRecorder::on_Thorax_clicked()
+{
+    if(!isThoraxOn){
+        resetAllButtonColor();
+        ui->Thorax->setStyleSheet("background-color: rgb(85, 138, 10)");
+        isThoraxOn = true;
+        currentClass = Thorax;
+        writeJsonWithClass();
+    }else{
+        resetAllButtonColor();
+    }
+}
+
+
+void VideoRecorder::on_Spine_clicked()
+{
+    if(!isSpineOn){
+        resetAllButtonColor();
+        ui->Spine->setStyleSheet("background-color: rgb(85, 138, 10)");
+        isSpineOn = true;
+        currentClass = Spine;
+        writeJsonWithClass();
+    }else{
+        resetAllButtonColor();
+    }
+}
+
+
+void VideoRecorder::on_Upper_Extremities_clicked()
+{
+    if(!isUpper_ExtremitiesOn){
+        resetAllButtonColor();
+        ui->Upper_Extremities->setStyleSheet("background-color: rgb(85, 138, 10)");
+        isUpper_ExtremitiesOn = true;
+        currentClass = Upper_Extremities;
+        writeJsonWithClass();
+    }else{
+        resetAllButtonColor();
+    }
+}
+
+
+void VideoRecorder::on_Lower_Extremities_clicked()
+{
+    if(!isLower_ExtremitiesOn){
+        resetAllButtonColor();
+        ui->Lower_Extremities->setStyleSheet("background-color: rgb(85, 138, 10)");
+        isLower_ExtremitiesOn = true;
+        currentClass = Lower_Extremities;
+        writeJsonWithClass();
+    }else{
+        resetAllButtonColor();
+    }
+}
+
+
+void VideoRecorder::on_General_clicked()
+{
+    if(!isGeneralOn){
+        resetAllButtonColor();
+        ui->General->setStyleSheet("background-color: rgb(85, 138, 10)");
+        isGeneralOn = true;
+        currentClass = General;
+        writeJsonWithClass();
+    }else{
+        resetAllButtonColor();
+    }
+}
 
 void VideoRecorder::resetAllButtonColor()
 {
     currentClass = None;
 
-    isButton1On = false;
-    ui->pushButton->setStyleSheet("background-color: red");
+    setAllButtonFalse();
 
-    isButton2On = false;
-    ui->pushButton_2->setStyleSheet("background-color: red");
+    ui->Head->setStyleSheet("background-color: rgb(84, 84, 84)");
 
-    isButton3On = false;
-    ui->pushButton_3->setStyleSheet("background-color: red");
+    ui->Face->setStyleSheet("background-color: rgb(84, 84, 84)");
+
+    ui->Abdomen->setStyleSheet("background-color: rgb(84, 84, 84)");
+
+    ui->Pelvis->setStyleSheet("background-color: rgb(84, 84, 84)");
+
+    ui->Thorax->setStyleSheet("background-color: rgb(84, 84, 84)");
+
+    ui->Spine->setStyleSheet("background-color: rgb(84, 84, 84)");
+
+    ui->Upper_Extremities->setStyleSheet("background-color: rgb(84, 84, 84)");
+
+    ui->Lower_Extremities->setStyleSheet("background-color: rgb(84, 84, 84)");
+
+    ui->General->setStyleSheet("background-color: rgb(84, 84, 84)");
+
 }
+
+
+
+
+
+
 

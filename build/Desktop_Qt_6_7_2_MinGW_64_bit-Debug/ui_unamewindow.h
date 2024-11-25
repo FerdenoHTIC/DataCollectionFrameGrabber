@@ -37,6 +37,7 @@ public:
             UnameWindow->setObjectName("UnameWindow");
         UnameWindow->resize(1920, 1080);
         UnameWindow->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 0, 0);"));
+        UnameWindow->setTabShape(QTabWidget::TabShape::Rounded);
         centralwidget = new QWidget(UnameWindow);
         centralwidget->setObjectName("centralwidget");
         logo_image = new QLabel(centralwidget);
@@ -75,9 +76,16 @@ public:
         auth_login = new QPushButton(frame);
         auth_login->setObjectName("auth_login");
         auth_login->setGeometry(QRect(240, 260, 460, 60));
+        QSizePolicy sizePolicy(QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(auth_login->sizePolicy().hasHeightForWidth());
+        auth_login->setSizePolicy(sizePolicy);
         QFont font1;
         font1.setPointSize(20);
         font1.setBold(false);
+        font1.setStyleStrategy(QFont::PreferDefault);
+        font1.setHintingPreference(QFont::PreferDefaultHinting);
         auth_login->setFont(font1);
         auth_login->setFocusPolicy(Qt::FocusPolicy::NoFocus);
         auth_login->setStyleSheet(QString::fromUtf8("#auth_login {\n"

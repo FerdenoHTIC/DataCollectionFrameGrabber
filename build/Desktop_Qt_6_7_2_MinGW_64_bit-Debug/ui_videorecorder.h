@@ -29,11 +29,17 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QPushButton *startCamera;
     QPushButton *stopCamera;
-    QWidget *widget;
+    QWidget *layoutWidget1;
     QGridLayout *gridLayout;
-    QPushButton *pushButton_3;
-    QPushButton *pushButton;
-    QPushButton *pushButton_2;
+    QPushButton *Abdomen;
+    QPushButton *Lower_Extremities;
+    QPushButton *Head;
+    QPushButton *Upper_Extremities;
+    QPushButton *Thorax;
+    QPushButton *Spine;
+    QPushButton *Pelvis;
+    QPushButton *Face;
+    QPushButton *General;
 
     void setupUi(QMainWindow *VideoRecorder)
     {
@@ -73,41 +79,131 @@ public:
 
         horizontalLayout_2->addWidget(stopCamera);
 
-        widget = new QWidget(centralwidget);
-        widget->setObjectName("widget");
-        widget->setGeometry(QRect(1140, 270, 321, 91));
-        gridLayout = new QGridLayout(widget);
+        layoutWidget1 = new QWidget(centralwidget);
+        layoutWidget1->setObjectName("layoutWidget1");
+        layoutWidget1->setGeometry(QRect(1110, 120, 357, 361));
+        gridLayout = new QGridLayout(layoutWidget1);
         gridLayout->setObjectName("gridLayout");
         gridLayout->setContentsMargins(0, 0, 0, 0);
-        pushButton_3 = new QPushButton(widget);
-        pushButton_3->setObjectName("pushButton_3");
-        pushButton_3->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color: Red;\n"
+        Abdomen = new QPushButton(layoutWidget1);
+        Abdomen->setObjectName("Abdomen");
+        QSizePolicy sizePolicy(QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(Abdomen->sizePolicy().hasHeightForWidth());
+        Abdomen->setSizePolicy(sizePolicy);
+        Abdomen->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: rgb(84, 84, 84);\n"
 "}\n"
 ""));
 
-        gridLayout->addWidget(pushButton_3, 0, 2, 1, 1);
+        gridLayout->addWidget(Abdomen, 1, 0, 1, 1);
 
-        pushButton = new QPushButton(widget);
-        pushButton->setObjectName("pushButton");
-        pushButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color: Red;\n"
-"}\n"
-""));
-        pushButton->setIconSize(QSize(20, 20));
-
-        gridLayout->addWidget(pushButton, 0, 0, 1, 1);
-
-        pushButton_2 = new QPushButton(widget);
-        pushButton_2->setObjectName("pushButton_2");
-        pushButton_2->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color: Red;\n"
+        Lower_Extremities = new QPushButton(layoutWidget1);
+        Lower_Extremities->setObjectName("Lower_Extremities");
+        sizePolicy.setHeightForWidth(Lower_Extremities->sizePolicy().hasHeightForWidth());
+        Lower_Extremities->setSizePolicy(sizePolicy);
+        Lower_Extremities->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: rgb(84, 84, 84);\n"
 "}\n"
 ""));
 
-        gridLayout->addWidget(pushButton_2, 0, 1, 1, 1);
+        gridLayout->addWidget(Lower_Extremities, 4, 1, 1, 1);
+
+        Head = new QPushButton(layoutWidget1);
+        Head->setObjectName("Head");
+        sizePolicy.setHeightForWidth(Head->sizePolicy().hasHeightForWidth());
+        Head->setSizePolicy(sizePolicy);
+        QFont font2;
+        font2.setItalic(false);
+        font2.setUnderline(false);
+        font2.setKerning(true);
+        Head->setFont(font2);
+        Head->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: rgb(84, 84, 84);\n"
+"}\n"
+""));
+        Head->setIconSize(QSize(20, 20));
+
+        gridLayout->addWidget(Head, 0, 0, 1, 1);
+
+        Upper_Extremities = new QPushButton(layoutWidget1);
+        Upper_Extremities->setObjectName("Upper_Extremities");
+        sizePolicy.setHeightForWidth(Upper_Extremities->sizePolicy().hasHeightForWidth());
+        Upper_Extremities->setSizePolicy(sizePolicy);
+        Upper_Extremities->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: rgb(84, 84, 84);\n"
+"}\n"
+""));
+
+        gridLayout->addWidget(Upper_Extremities, 4, 0, 1, 1);
+
+        Thorax = new QPushButton(layoutWidget1);
+        Thorax->setObjectName("Thorax");
+        sizePolicy.setHeightForWidth(Thorax->sizePolicy().hasHeightForWidth());
+        Thorax->setSizePolicy(sizePolicy);
+        Thorax->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: rgb(84, 84, 84);\n"
+"}\n"
+""));
+
+        gridLayout->addWidget(Thorax, 2, 0, 1, 1);
+
+        Spine = new QPushButton(layoutWidget1);
+        Spine->setObjectName("Spine");
+        sizePolicy.setHeightForWidth(Spine->sizePolicy().hasHeightForWidth());
+        Spine->setSizePolicy(sizePolicy);
+        Spine->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: rgb(84, 84, 84);\n"
+"}\n"
+""));
+
+        gridLayout->addWidget(Spine, 2, 1, 1, 1);
+
+        Pelvis = new QPushButton(layoutWidget1);
+        Pelvis->setObjectName("Pelvis");
+        sizePolicy.setHeightForWidth(Pelvis->sizePolicy().hasHeightForWidth());
+        Pelvis->setSizePolicy(sizePolicy);
+        Pelvis->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: rgb(84, 84, 84);\n"
+"}\n"
+""));
+
+        gridLayout->addWidget(Pelvis, 1, 1, 1, 1);
+
+        Face = new QPushButton(layoutWidget1);
+        Face->setObjectName("Face");
+        sizePolicy.setHeightForWidth(Face->sizePolicy().hasHeightForWidth());
+        Face->setSizePolicy(sizePolicy);
+        Face->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: rgb(84, 84, 84);\n"
+"}\n"
+""));
+
+        gridLayout->addWidget(Face, 0, 1, 1, 1);
+
+        General = new QPushButton(layoutWidget1);
+        General->setObjectName("General");
+        sizePolicy.setHeightForWidth(General->sizePolicy().hasHeightForWidth());
+        General->setSizePolicy(sizePolicy);
+        General->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: rgb(84, 84, 84);\n"
+"}\n"
+""));
+
+        gridLayout->addWidget(General, 5, 0, 1, 1);
 
         VideoRecorder->setCentralWidget(centralwidget);
+        QWidget::setTabOrder(stopCamera, Head);
+        QWidget::setTabOrder(Head, startCamera);
+        QWidget::setTabOrder(startCamera, Abdomen);
+        QWidget::setTabOrder(Abdomen, Face);
+        QWidget::setTabOrder(Face, Pelvis);
+        QWidget::setTabOrder(Pelvis, Thorax);
+        QWidget::setTabOrder(Thorax, Spine);
+        QWidget::setTabOrder(Spine, Upper_Extremities);
+        QWidget::setTabOrder(Upper_Extremities, Lower_Extremities);
+        QWidget::setTabOrder(Lower_Extremities, General);
 
         retranslateUi(VideoRecorder);
 
@@ -119,9 +215,15 @@ public:
         VideoRecorder->setWindowTitle(QCoreApplication::translate("VideoRecorder", "MainWindow", nullptr));
         startCamera->setText(QCoreApplication::translate("VideoRecorder", "Start Camera", nullptr));
         stopCamera->setText(QCoreApplication::translate("VideoRecorder", "Stop Camera", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("VideoRecorder", "3", nullptr));
-        pushButton->setText(QCoreApplication::translate("VideoRecorder", "1", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("VideoRecorder", "2", nullptr));
+        Abdomen->setText(QCoreApplication::translate("VideoRecorder", "Abdomen", nullptr));
+        Lower_Extremities->setText(QCoreApplication::translate("VideoRecorder", " Lower Extremities", nullptr));
+        Head->setText(QCoreApplication::translate("VideoRecorder", "Head", nullptr));
+        Upper_Extremities->setText(QCoreApplication::translate("VideoRecorder", " Upper Extremities", nullptr));
+        Thorax->setText(QCoreApplication::translate("VideoRecorder", "Thorax", nullptr));
+        Spine->setText(QCoreApplication::translate("VideoRecorder", "Spine", nullptr));
+        Pelvis->setText(QCoreApplication::translate("VideoRecorder", "Pelvis", nullptr));
+        Face->setText(QCoreApplication::translate("VideoRecorder", "Face", nullptr));
+        General->setText(QCoreApplication::translate("VideoRecorder", "General", nullptr));
     } // retranslateUi
 
 };

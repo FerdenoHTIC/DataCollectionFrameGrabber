@@ -22,10 +22,17 @@ class VideoRecorder;
 
 
 enum ClassName{
+
     None,
-    Button1,
-    Button2,
-    Button3
+    Head,
+    Face,
+    Abdomen,
+    Pelvis,
+    Thorax,
+    Spine,
+    Upper_Extremities,
+    Lower_Extremities,
+    General
 };
 
 
@@ -44,13 +51,25 @@ private slots:
     void on_stopCamera_clicked();
 
 
-    void on_pushButton_clicked();
+    void on_Head_clicked();
 
-    void on_pushButton_2_clicked();
+    void on_Face_clicked();
 
-    void on_pushButton_3_clicked();
+    void on_Abdomen_clicked();
 
 
+
+    void on_Pelvis_clicked();
+
+    void on_Thorax_clicked();
+
+    void on_Spine_clicked();
+
+    void on_Upper_Extremities_clicked();
+
+    void on_Lower_Extremities_clicked();
+
+    void on_General_clicked();
 
 private:
     Ui::VideoRecorder *ui;
@@ -62,9 +81,15 @@ private:
     ClassName currentClass;
     void resetAllButtonColor();
 
-    bool isButton1On;
-    bool isButton2On;
-    bool isButton3On;
+    bool isHeadOn;
+    bool isFaceOn;
+    bool isAbdomenOn;
+    bool isPelvisOn;
+    bool isThoraxOn;
+    bool isSpineOn;
+    bool isUpper_ExtremitiesOn;
+    bool isLower_ExtremitiesOn;
+    bool isGeneralOn;
 
     QString jsonFilePath;
 
@@ -77,6 +102,8 @@ private:
     void disableAllButtons();
 
     void enableAllButtons();
+
+    void setAllButtonFalse();
 
 };
 
