@@ -12,11 +12,17 @@ VideoRecorder::VideoRecorder(QWidget *parent)
 {
     ui->setupUi(this);
 
-    ui->startCamera->setEnabled(true);
+    ui->startCamera->setEnabled(false);
     ui->stopCamera->setEnabled(false);
 
     setAllButtonFalse();
-    disableAllButtons();
+    setDisableAllButtons();
+
+    QStringList items = {"1st Trisemester", "2nd Trisemester (Target)", "3rd Trisemester"};
+
+    ui->semesterCombo->addItems(items);
+    ui->semesterCombo->setEnabled(false);
+    setInVisibleAllButtons();
 
 }
 
@@ -30,7 +36,7 @@ VideoRecorder::~VideoRecorder()
 }
 
 
-void VideoRecorder::disableAllButtons(){
+void VideoRecorder::setDisableAllButtons(){
 
     ui->Head->setEnabled(false);
     ui->Face->setEnabled(false);
@@ -43,7 +49,7 @@ void VideoRecorder::disableAllButtons(){
     ui->General->setEnabled(false);
 }
 
-void VideoRecorder::enableAllButtons(){
+void VideoRecorder::setEnableAllButtons(){
 
     ui->Head->setEnabled(true);
     ui->Face->setEnabled(true);
@@ -69,6 +75,29 @@ void VideoRecorder::setAllButtonFalse(){
     isGeneralOn = false;
 }
 
+void VideoRecorder::setVisibleAllButtons(){
+    ui->Head->setVisible(true);
+    ui->Face->setVisible(true);
+    ui->Abdomen->setVisible(true);
+    ui->Pelvis->setVisible(true);
+    ui->Thorax->setVisible(true);
+    ui->Spine->setVisible(true);
+    ui->Upper_Extremities->setVisible(true);
+    ui->Lower_Extremities->setVisible(true);
+    ui->General->setVisible(true);
+}
+
+void VideoRecorder::setInVisibleAllButtons(){
+    ui->Head->setVisible(false);
+    ui->Face->setVisible(false);
+    ui->Abdomen->setVisible(false);
+    ui->Pelvis->setVisible(false);
+    ui->Thorax->setVisible(false);
+    ui->Spine->setVisible(false);
+    ui->Upper_Extremities->setVisible(false);
+    ui->Lower_Extremities->setVisible(false);
+    ui->General->setVisible(false);
+}
 
 void VideoRecorder::on_startCamera_clicked()
 {
@@ -115,13 +144,6 @@ void VideoRecorder::on_startCamera_clicked()
 
     captureSession->setVideoOutput(ui->displayvideo);
 
-    QString saveDirectory = QCoreApplication::applicationDirPath() + "/SaveVideo";
-
-    // Create the directory if it does not exist
-    QDir dir(saveDirectory);
-    if (!dir.exists()) {
-        dir.mkpath("."); // Create the directory if it doesn't exist
-    }
 
     QString timestamp = QDateTime::currentDateTime().toString("yyyyMMdd_hhmmss");
 
@@ -150,6 +172,7 @@ void VideoRecorder::on_startCamera_clicked()
     QJsonObject jsonObject;
     jsonObject["VideoName"] = QString("Video_") + timestamp;
     jsonObject["VideoPath"] = savePath;
+    jsonObject["Semester"] = semesterText;
     jsonObject["Class"] = {};
 
 
@@ -166,19 +189,21 @@ void VideoRecorder::on_startCamera_clicked()
         videoStartTimer.start();  // Start counting the time from now
         mediaRecorder->record();
         resetAllButtonColor();
-        enableAllButtons();
+        setEnableAllButtons();
         ui->startCamera->setEnabled(false);
         ui->stopCamera->setEnabled(true);
+        ui->LoadFolder->setEnabled(false);
     }
 }
 
 
 void VideoRecorder::on_stopCamera_clicked()
 {
-    disableAllButtons();
+    setDisableAllButtons();
     resetAllButtonColor();
     ui->stopCamera->setEnabled(false);
     ui->startCamera->setEnabled(true);
+    ui->LoadFolder->setEnabled(true);
     mediaRecorder->stop();
     camera->stop();
 
@@ -322,6 +347,7 @@ void VideoRecorder::on_Abdomen_clicked()
     }
 }
 
+
 void VideoRecorder::on_Pelvis_clicked()
 {
     if(!isPelvisOn){
@@ -405,6 +431,7 @@ void VideoRecorder::on_General_clicked()
     }
 }
 
+
 void VideoRecorder::resetAllButtonColor()
 {
     currentClass = None;
@@ -436,4 +463,45 @@ void VideoRecorder::resetAllButtonColor()
 
 
 
+
+
+void VideoRecorder::on_LoadFolder_clicked()
+{
+    // Open a dialog to let the user select a directory
+    QString selectedDirectory = QFileDialog::getExistingDirectory(this,
+                                                                  tr("Select Directory to save the video"),
+                                                                  QCoreApplication::applicationDirPath(),
+                                                                  QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+
+    // Check if the user selected a directory
+    if (!selectedDirectory.isEmpty()) {
+        saveDirectory = selectedDirectory;
+        ui->semesterCombo->setEnabled(true);
+    }
+}
+
+
+
+void VideoRecorder::on_semesterCombo_currentIndexChanged(int index)
+{
+    semesterIndex=index;
+
+    if(index!=-1)
+        ui->startCamera->setEnabled(true);
+    else
+        ui->startCamera->setEnabled(false);
+
+    if(index==1)
+        setVisibleAllButtons();
+    else
+        setInVisibleAllButtons();
+
+}
+
+
+void VideoRecorder::on_semesterCombo_currentTextChanged(const QString &arg1)
+{
+    semesterText = arg1;
+    qDebug() << semesterText;
+}
 

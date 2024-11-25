@@ -44,14 +44,14 @@ public:
         stackedWidget = new QStackedWidget(centralwidget);
         stackedWidget->setObjectName("stackedWidget");
         stackedWidget->setGeometry(QRect(40, 80, 1840, 920));
-        stackedWidget->setLayoutDirection(Qt::LeftToRight);
+        stackedWidget->setLayoutDirection(Qt::LayoutDirection::LeftToRight);
         stackedWidget->setStyleSheet(QString::fromUtf8("\n"
 "background-color: rgb(0, 0, 0);"));
         top_frame = new QFrame(centralwidget);
         top_frame->setObjectName("top_frame");
         top_frame->setGeometry(QRect(0, 0, 1920, 65));
-        top_frame->setFrameShape(QFrame::StyledPanel);
-        top_frame->setFrameShadow(QFrame::Raised);
+        top_frame->setFrameShape(QFrame::Shape::StyledPanel);
+        top_frame->setFrameShadow(QFrame::Shadow::Raised);
         title_label = new QLabel(top_frame);
         title_label->setObjectName("title_label");
         title_label->setGeometry(QRect(470, 20, 610, 40));
@@ -65,8 +65,8 @@ public:
         bottom_frame->setGeometry(QRect(0, 1030, 1901, 50));
         bottom_frame->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 0, 0);\n"
 "color: rgb(255, 255, 255);"));
-        bottom_frame->setFrameShape(QFrame::StyledPanel);
-        bottom_frame->setFrameShadow(QFrame::Raised);
+        bottom_frame->setFrameShape(QFrame::Shape::StyledPanel);
+        bottom_frame->setFrameShadow(QFrame::Shadow::Raised);
         time_label = new QLabel(bottom_frame);
         time_label->setObjectName("time_label");
         time_label->setGeometry(QRect(1600, 0, 150, 30));

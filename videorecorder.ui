@@ -20,10 +20,10 @@
    <widget class="QVideoWidget" name="displayvideo" native="true">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>1031</width>
-      <height>621</height>
+      <x>30</x>
+      <y>60</y>
+      <width>611</width>
+      <height>401</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -33,42 +33,82 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>660</y>
-      <width>1031</width>
+      <x>30</x>
+      <y>510</y>
+      <width>621</width>
       <height>61</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
       <widget class="QPushButton" name="startCamera">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="font">
         <font>
-         <pointsize>19</pointsize>
+         <pointsize>10</pointsize>
          <fontweight>Medium</fontweight>
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(85, 85, 85);</string>
+        <string notr="true">background-color: rgb(84, 84, 84);</string>
        </property>
        <property name="text">
-        <string>Start Camera</string>
+        <string>Start Recording</string>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="stopCamera">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="font">
         <font>
-         <pointsize>20</pointsize>
+         <pointsize>10</pointsize>
          <fontweight>Medium</fontweight>
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(85, 85, 85);</string>
+        <string notr="true">background-color: rgb(84, 84, 84);</string>
        </property>
        <property name="text">
-        <string>Stop Camera</string>
+        <string>Stop Recording</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="LoadFolder">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+         <fontweight>Medium</fontweight>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(84, 84, 84);</string>
+       </property>
+       <property name="text">
+        <string>Load Folder</string>
        </property>
       </widget>
      </item>
@@ -77,10 +117,10 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>1110</x>
-      <y>120</y>
-      <width>357</width>
-      <height>361</height>
+      <x>750</x>
+      <y>160</y>
+      <width>471</width>
+      <height>431</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
@@ -270,6 +310,31 @@
      </item>
     </layout>
    </widget>
+   <widget class="QComboBox" name="semesterCombo">
+    <property name="geometry">
+     <rect>
+      <x>750</x>
+      <y>70</y>
+      <width>461</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox{
+    background-color: rgb(84, 84, 84);
+    text-align: center;
+}</string>
+    </property>
+    <property name="insertPolicy">
+     <enum>QComboBox::InsertPolicy::InsertAtBottom</enum>
+    </property>
+    <property name="sizeAdjustPolicy">
+     <enum>QComboBox::SizeAdjustPolicy::AdjustToContentsOnFirstShow</enum>
+    </property>
+    <property name="placeholderText">
+     <string>Select a option</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <customwidgets>
@@ -281,9 +346,7 @@
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>stopCamera</tabstop>
   <tabstop>Head</tabstop>
-  <tabstop>startCamera</tabstop>
   <tabstop>Abdomen</tabstop>
   <tabstop>Face</tabstop>
   <tabstop>Pelvis</tabstop>

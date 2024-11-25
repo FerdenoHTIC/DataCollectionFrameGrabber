@@ -22,6 +22,7 @@ void UnameWindow::login_clicked()
     if(username=="anu" && password =="anu")
     {
         // QMessageBox::information(this,"Login","Login successful");
+
         emit emit_uname_page(2);
 
     }

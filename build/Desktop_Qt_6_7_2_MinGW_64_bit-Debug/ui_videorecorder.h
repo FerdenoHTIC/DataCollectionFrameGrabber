@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtMultimediaWidgets/QVideoWidget>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QMainWindow>
@@ -29,6 +30,7 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QPushButton *startCamera;
     QPushButton *stopCamera;
+    QPushButton *LoadFolder;
     QWidget *layoutWidget1;
     QGridLayout *gridLayout;
     QPushButton *Abdomen;
@@ -40,6 +42,7 @@ public:
     QPushButton *Pelvis;
     QPushButton *Face;
     QPushButton *General;
+    QComboBox *semesterCombo;
 
     void setupUi(QMainWindow *VideoRecorder)
     {
@@ -51,45 +54,56 @@ public:
         centralwidget->setObjectName("centralwidget");
         displayvideo = new QVideoWidget(centralwidget);
         displayvideo->setObjectName("displayvideo");
-        displayvideo->setGeometry(QRect(10, 10, 1031, 621));
+        displayvideo->setGeometry(QRect(30, 60, 611, 401));
         displayvideo->setStyleSheet(QString::fromUtf8("background-color: rgb(194, 255, 161)"));
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName("layoutWidget");
-        layoutWidget->setGeometry(QRect(10, 660, 1031, 61));
+        layoutWidget->setGeometry(QRect(30, 510, 621, 61));
         horizontalLayout_2 = new QHBoxLayout(layoutWidget);
         horizontalLayout_2->setObjectName("horizontalLayout_2");
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
         startCamera = new QPushButton(layoutWidget);
         startCamera->setObjectName("startCamera");
+        QSizePolicy sizePolicy(QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(startCamera->sizePolicy().hasHeightForWidth());
+        startCamera->setSizePolicy(sizePolicy);
         QFont font;
-        font.setPointSize(19);
+        font.setPointSize(10);
         font.setWeight(QFont::Medium);
         startCamera->setFont(font);
-        startCamera->setStyleSheet(QString::fromUtf8("background-color: rgb(85, 85, 85);"));
+        startCamera->setStyleSheet(QString::fromUtf8("background-color: rgb(84, 84, 84);"));
+        startCamera->setIconSize(QSize(20, 20));
 
         horizontalLayout_2->addWidget(startCamera);
 
         stopCamera = new QPushButton(layoutWidget);
         stopCamera->setObjectName("stopCamera");
-        QFont font1;
-        font1.setPointSize(20);
-        font1.setWeight(QFont::Medium);
-        stopCamera->setFont(font1);
-        stopCamera->setStyleSheet(QString::fromUtf8("background-color: rgb(85, 85, 85);"));
+        sizePolicy.setHeightForWidth(stopCamera->sizePolicy().hasHeightForWidth());
+        stopCamera->setSizePolicy(sizePolicy);
+        stopCamera->setFont(font);
+        stopCamera->setStyleSheet(QString::fromUtf8("background-color: rgb(84, 84, 84);"));
 
         horizontalLayout_2->addWidget(stopCamera);
 
+        LoadFolder = new QPushButton(layoutWidget);
+        LoadFolder->setObjectName("LoadFolder");
+        sizePolicy.setHeightForWidth(LoadFolder->sizePolicy().hasHeightForWidth());
+        LoadFolder->setSizePolicy(sizePolicy);
+        LoadFolder->setFont(font);
+        LoadFolder->setStyleSheet(QString::fromUtf8("background-color: rgb(84, 84, 84);"));
+
+        horizontalLayout_2->addWidget(LoadFolder);
+
         layoutWidget1 = new QWidget(centralwidget);
         layoutWidget1->setObjectName("layoutWidget1");
-        layoutWidget1->setGeometry(QRect(1110, 120, 357, 361));
+        layoutWidget1->setGeometry(QRect(750, 160, 471, 431));
         gridLayout = new QGridLayout(layoutWidget1);
         gridLayout->setObjectName("gridLayout");
         gridLayout->setContentsMargins(0, 0, 0, 0);
         Abdomen = new QPushButton(layoutWidget1);
         Abdomen->setObjectName("Abdomen");
-        QSizePolicy sizePolicy(QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Preferred);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(Abdomen->sizePolicy().hasHeightForWidth());
         Abdomen->setSizePolicy(sizePolicy);
         Abdomen->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -114,11 +128,11 @@ public:
         Head->setObjectName("Head");
         sizePolicy.setHeightForWidth(Head->sizePolicy().hasHeightForWidth());
         Head->setSizePolicy(sizePolicy);
-        QFont font2;
-        font2.setItalic(false);
-        font2.setUnderline(false);
-        font2.setKerning(true);
-        Head->setFont(font2);
+        QFont font1;
+        font1.setItalic(false);
+        font1.setUnderline(false);
+        font1.setKerning(true);
+        Head->setFont(font1);
         Head->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: rgb(84, 84, 84);\n"
 "}\n"
@@ -193,10 +207,17 @@ public:
 
         gridLayout->addWidget(General, 5, 0, 1, 1);
 
+        semesterCombo = new QComboBox(centralwidget);
+        semesterCombo->setObjectName("semesterCombo");
+        semesterCombo->setGeometry(QRect(750, 70, 461, 61));
+        semesterCombo->setStyleSheet(QString::fromUtf8("QComboBox{\n"
+"    background-color: rgb(84, 84, 84);\n"
+"    text-align: center;\n"
+"}"));
+        semesterCombo->setInsertPolicy(QComboBox::InsertPolicy::InsertAtBottom);
+        semesterCombo->setSizeAdjustPolicy(QComboBox::SizeAdjustPolicy::AdjustToContentsOnFirstShow);
         VideoRecorder->setCentralWidget(centralwidget);
-        QWidget::setTabOrder(stopCamera, Head);
-        QWidget::setTabOrder(Head, startCamera);
-        QWidget::setTabOrder(startCamera, Abdomen);
+        QWidget::setTabOrder(Head, Abdomen);
         QWidget::setTabOrder(Abdomen, Face);
         QWidget::setTabOrder(Face, Pelvis);
         QWidget::setTabOrder(Pelvis, Thorax);
@@ -213,8 +234,9 @@ public:
     void retranslateUi(QMainWindow *VideoRecorder)
     {
         VideoRecorder->setWindowTitle(QCoreApplication::translate("VideoRecorder", "MainWindow", nullptr));
-        startCamera->setText(QCoreApplication::translate("VideoRecorder", "Start Camera", nullptr));
-        stopCamera->setText(QCoreApplication::translate("VideoRecorder", "Stop Camera", nullptr));
+        startCamera->setText(QCoreApplication::translate("VideoRecorder", "Start Recording", nullptr));
+        stopCamera->setText(QCoreApplication::translate("VideoRecorder", "Stop Recording", nullptr));
+        LoadFolder->setText(QCoreApplication::translate("VideoRecorder", "Load Folder", nullptr));
         Abdomen->setText(QCoreApplication::translate("VideoRecorder", "Abdomen", nullptr));
         Lower_Extremities->setText(QCoreApplication::translate("VideoRecorder", " Lower Extremities", nullptr));
         Head->setText(QCoreApplication::translate("VideoRecorder", "Head", nullptr));
@@ -224,6 +246,7 @@ public:
         Pelvis->setText(QCoreApplication::translate("VideoRecorder", "Pelvis", nullptr));
         Face->setText(QCoreApplication::translate("VideoRecorder", "Face", nullptr));
         General->setText(QCoreApplication::translate("VideoRecorder", "General", nullptr));
+        semesterCombo->setPlaceholderText(QCoreApplication::translate("VideoRecorder", "Select a option", nullptr));
     } // retranslateUi
 
 };

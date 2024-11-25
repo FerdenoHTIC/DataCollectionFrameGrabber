@@ -71,6 +71,12 @@ private slots:
 
     void on_General_clicked();
 
+    void on_LoadFolder_clicked();
+
+    void on_semesterCombo_currentIndexChanged(int index);
+
+    void on_semesterCombo_currentTextChanged(const QString &arg1);
+
 private:
     Ui::VideoRecorder *ui;
     QCamera *camera;
@@ -95,15 +101,26 @@ private:
 
     QString savePath;
 
+    QString saveDirectory;
+
     void writeJsonWithClass();
 
     QElapsedTimer videoStartTimer;
 
-    void disableAllButtons();
+    void setDisableAllButtons();
 
-    void enableAllButtons();
+    void setEnableAllButtons();
 
     void setAllButtonFalse();
+
+    void setVisibleAllButtons();
+
+    void setInVisibleAllButtons();
+
+    int semesterIndex;
+
+    QString semesterText;
+
 
 };
 
