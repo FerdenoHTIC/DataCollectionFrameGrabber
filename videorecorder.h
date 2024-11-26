@@ -15,6 +15,7 @@
 #include <QJsonDocument>
 #include <QJsonArray>
 #include <QElapsedTimer>
+#include <QComboBox>
 
 namespace Ui {
 class VideoRecorder;
@@ -77,6 +78,8 @@ private slots:
 
     void on_semesterCombo_currentTextChanged(const QString &arg1);
 
+    void on_cameraCombo_activated(int index);
+
 private:
     Ui::VideoRecorder *ui;
     QCamera *camera;
@@ -84,6 +87,7 @@ private:
     QImageCapture *imageCapture;
     QMediaRecorder *mediaRecorder; // Add mediaRecorder as a private member
 
+    int cameraIndex;
     ClassName currentClass;
     void resetAllButtonColor();
 
@@ -120,6 +124,10 @@ private:
     int semesterIndex;
 
     QString semesterText;
+
+    void on_comboBoxClicked();
+
+    void enableStartRecordingButton();
 
 
 };

@@ -8,6 +8,7 @@ VideoRecorder::VideoRecorder(QWidget *parent)
     , imageCapture(new QImageCapture(this))
     , mediaRecorder(new QMediaRecorder(this)) // Initialize mediaRecorder
     , camera(nullptr) // Initialize camera
+    , cameraIndex(-1)
 
 {
     ui->setupUi(this);
@@ -23,6 +24,15 @@ VideoRecorder::VideoRecorder(QWidget *parent)
     ui->semesterCombo->addItems(items);
     ui->semesterCombo->setEnabled(false);
     setInVisibleAllButtons();
+
+    ui->cameraCombo->addItem("None");
+    const QList<QCameraDevice> availableCameras = QMediaDevices::videoInputs();
+
+    for(const QCameraDevice &device : availableCameras){
+        ui->cameraCombo->addItem(device.description());
+    }
+    ui->cameraCombo->setEnabled(false);
+
 
 }
 
@@ -102,32 +112,19 @@ void VideoRecorder::setInVisibleAllButtons(){
 void VideoRecorder::on_startCamera_clicked()
 {
 
-
     const QList<QCameraDevice> availableCameras = QMediaDevices::videoInputs();
 
-    int cameraIndex = -1;
-    bool isFrameGrabberFound = false;
-    for(const QCameraDevice &device : availableCameras){
-        cameraIndex++;
-        if(device.description() == "USB 2.0 Webcam Device"){ // "USB 2.0 Webcam Device" or "AV.io HD+"
-            isFrameGrabberFound = true;
-            break;
-        }
-    }
+    qDebug() << "Available camera: " << availableCameras.count();
 
-
-
-    if (!isFrameGrabberFound) {
-        QMessageBox::warning(this,
-                             "Camera Not Found",
-                             "No camera is available to start. Please connect a camera and try again.");
-        camera = nullptr;
+    if (cameraIndex < 0 || cameraIndex > availableCameras.count()-1){
+            QMessageBox::warning(this,
+                             "Input Not Found",
+                             "No Input is available to start. Please connect a Input Device and try again.");
         return;
     }
 
+
     camera = new QCamera(availableCameras[cameraIndex], this);
-
-
 
 
     // Select the first camera in the list
@@ -193,6 +190,8 @@ void VideoRecorder::on_startCamera_clicked()
         ui->startCamera->setEnabled(false);
         ui->stopCamera->setEnabled(true);
         ui->LoadFolder->setEnabled(false);
+        ui->semesterCombo->setEnabled(false);
+        ui->cameraCombo->setEnabled(false);
     }
 }
 
@@ -204,6 +203,8 @@ void VideoRecorder::on_stopCamera_clicked()
     ui->stopCamera->setEnabled(false);
     ui->startCamera->setEnabled(true);
     ui->LoadFolder->setEnabled(true);
+    ui->semesterCombo->setEnabled(true);
+    ui->cameraCombo->setEnabled(true);
     mediaRecorder->stop();
     camera->stop();
 
@@ -461,10 +462,6 @@ void VideoRecorder::resetAllButtonColor()
 
 
 
-
-
-
-
 void VideoRecorder::on_LoadFolder_clicked()
 {
     // Open a dialog to let the user select a directory
@@ -477,6 +474,7 @@ void VideoRecorder::on_LoadFolder_clicked()
     if (!selectedDirectory.isEmpty()) {
         saveDirectory = selectedDirectory;
         ui->semesterCombo->setEnabled(true);
+        ui->cameraCombo->setEnabled(true);
     }
 }
 
@@ -486,10 +484,7 @@ void VideoRecorder::on_semesterCombo_currentIndexChanged(int index)
 {
     semesterIndex=index;
 
-    if(index!=-1)
-        ui->startCamera->setEnabled(true);
-    else
-        ui->startCamera->setEnabled(false);
+    enableStartRecordingButton();
 
     if(index==1)
         setVisibleAllButtons();
@@ -502,6 +497,53 @@ void VideoRecorder::on_semesterCombo_currentIndexChanged(int index)
 void VideoRecorder::on_semesterCombo_currentTextChanged(const QString &arg1)
 {
     semesterText = arg1;
-    qDebug() << semesterText;
 }
+
+
+
+void VideoRecorder::on_cameraCombo_activated(int index)
+{
+    const QList<QCameraDevice> availableCameras = QMediaDevices::videoInputs();
+
+    // First, remove items from combo box that are no longer available, except for "None"
+    for (int i = 1; i < ui->cameraCombo->count(); ++i) {  // Start from 1 to skip the "None" item
+        QString cameraDescription = ui->cameraCombo->itemText(i);
+        bool cameraAvailable = false;
+
+        for (const QCameraDevice &device : availableCameras) {
+            if (cameraDescription == device.description()) {
+                cameraAvailable = true;
+                break;
+            }
+        }
+
+        // If the camera is not available, remove it
+        if (!cameraAvailable) {
+            ui->cameraCombo->removeItem(i);
+            --i; // Adjust the index since we've removed an item
+        }
+    }
+
+    // Now, add any new cameras that aren't in the combo box, except "None"
+    for (const QCameraDevice &device : availableCameras) {
+        if (ui->cameraCombo->findText(device.description()) == -1) {
+            ui->cameraCombo->addItem(device.description());
+        }
+    }
+
+    cameraIndex = index -1;
+    enableStartRecordingButton();
+
+}
+
+
+void VideoRecorder::enableStartRecordingButton(){
+
+    if(semesterIndex!=-1 && cameraIndex!=-1){
+        ui->startCamera->setEnabled(true);
+    }else{
+        ui->startCamera->setEnabled(false);
+    }
+}
+
 

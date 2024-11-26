@@ -20,7 +20,7 @@
    <widget class="QVideoWidget" name="displayvideo" native="true">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>200</x>
       <y>60</y>
       <width>611</width>
       <height>401</height>
@@ -33,7 +33,7 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>200</x>
       <y>510</y>
       <width>621</width>
       <height>61</height>
@@ -117,7 +117,7 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>750</x>
+      <x>920</x>
       <y>160</y>
       <width>471</width>
       <height>431</height>
@@ -313,7 +313,7 @@
    <widget class="QComboBox" name="semesterCombo">
     <property name="geometry">
      <rect>
-      <x>750</x>
+      <x>920</x>
       <y>70</y>
       <width>461</width>
       <height>61</height>
@@ -322,7 +322,6 @@
     <property name="styleSheet">
      <string notr="true">QComboBox{
     background-color: rgb(84, 84, 84);
-    text-align: center;
 }</string>
     </property>
     <property name="insertPolicy">
@@ -333,6 +332,58 @@
     </property>
     <property name="placeholderText">
      <string>Select a option</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="cameraCombo">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>60</y>
+      <width>141</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox{
+    background-color: rgb(84, 84, 84);
+}</string>
+    </property>
+    <property name="placeholderText">
+     <string>Select Camera</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Anonymize">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>600</y>
+      <width>361</width>
+      <height>59</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <fontweight>Medium</fontweight>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(84, 84, 84);</string>
+    </property>
+    <property name="text">
+     <string>Anonymize</string>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>20</width>
+      <height>20</height>
+     </size>
     </property>
    </widget>
   </widget>

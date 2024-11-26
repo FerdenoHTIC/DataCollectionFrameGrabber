@@ -43,6 +43,8 @@ public:
     QPushButton *Face;
     QPushButton *General;
     QComboBox *semesterCombo;
+    QComboBox *cameraCombo;
+    QPushButton *Anonymize;
 
     void setupUi(QMainWindow *VideoRecorder)
     {
@@ -54,11 +56,11 @@ public:
         centralwidget->setObjectName("centralwidget");
         displayvideo = new QVideoWidget(centralwidget);
         displayvideo->setObjectName("displayvideo");
-        displayvideo->setGeometry(QRect(30, 60, 611, 401));
+        displayvideo->setGeometry(QRect(200, 60, 611, 401));
         displayvideo->setStyleSheet(QString::fromUtf8("background-color: rgb(194, 255, 161)"));
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName("layoutWidget");
-        layoutWidget->setGeometry(QRect(30, 510, 621, 61));
+        layoutWidget->setGeometry(QRect(200, 510, 621, 61));
         horizontalLayout_2 = new QHBoxLayout(layoutWidget);
         horizontalLayout_2->setObjectName("horizontalLayout_2");
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -98,7 +100,7 @@ public:
 
         layoutWidget1 = new QWidget(centralwidget);
         layoutWidget1->setObjectName("layoutWidget1");
-        layoutWidget1->setGeometry(QRect(750, 160, 471, 431));
+        layoutWidget1->setGeometry(QRect(920, 160, 471, 431));
         gridLayout = new QGridLayout(layoutWidget1);
         gridLayout->setObjectName("gridLayout");
         gridLayout->setContentsMargins(0, 0, 0, 0);
@@ -209,13 +211,26 @@ public:
 
         semesterCombo = new QComboBox(centralwidget);
         semesterCombo->setObjectName("semesterCombo");
-        semesterCombo->setGeometry(QRect(750, 70, 461, 61));
+        semesterCombo->setGeometry(QRect(920, 70, 461, 61));
         semesterCombo->setStyleSheet(QString::fromUtf8("QComboBox{\n"
 "    background-color: rgb(84, 84, 84);\n"
-"    text-align: center;\n"
 "}"));
         semesterCombo->setInsertPolicy(QComboBox::InsertPolicy::InsertAtBottom);
         semesterCombo->setSizeAdjustPolicy(QComboBox::SizeAdjustPolicy::AdjustToContentsOnFirstShow);
+        cameraCombo = new QComboBox(centralwidget);
+        cameraCombo->setObjectName("cameraCombo");
+        cameraCombo->setGeometry(QRect(30, 60, 141, 41));
+        cameraCombo->setStyleSheet(QString::fromUtf8("QComboBox{\n"
+"    background-color: rgb(84, 84, 84);\n"
+"}"));
+        Anonymize = new QPushButton(centralwidget);
+        Anonymize->setObjectName("Anonymize");
+        Anonymize->setGeometry(QRect(310, 600, 361, 59));
+        sizePolicy.setHeightForWidth(Anonymize->sizePolicy().hasHeightForWidth());
+        Anonymize->setSizePolicy(sizePolicy);
+        Anonymize->setFont(font);
+        Anonymize->setStyleSheet(QString::fromUtf8("background-color: rgb(84, 84, 84);"));
+        Anonymize->setIconSize(QSize(20, 20));
         VideoRecorder->setCentralWidget(centralwidget);
         QWidget::setTabOrder(Head, Abdomen);
         QWidget::setTabOrder(Abdomen, Face);
@@ -247,6 +262,8 @@ public:
         Face->setText(QCoreApplication::translate("VideoRecorder", "Face", nullptr));
         General->setText(QCoreApplication::translate("VideoRecorder", "General", nullptr));
         semesterCombo->setPlaceholderText(QCoreApplication::translate("VideoRecorder", "Select a option", nullptr));
+        cameraCombo->setPlaceholderText(QCoreApplication::translate("VideoRecorder", "Select Camera", nullptr));
+        Anonymize->setText(QCoreApplication::translate("VideoRecorder", "Anonymize", nullptr));
     } // retranslateUi
 
 };
